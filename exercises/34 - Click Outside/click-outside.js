@@ -5,18 +5,19 @@ const modalInner = document.querySelector('.modal-inner');
 function handleCardButtonClick(event) {
   const button = event.currentTarget;
   const card = button.closest('.card');
-  // Grab the image src
+  // Grab image source
   const imgSrc = card.querySelector('img').src;
   const desc = card.dataset.description;
   const name = card.querySelector('h2').textContent;
-  // populate the modal with the new info
+  // Populate the model with the new info
   modalInner.innerHTML = `
-    <img width="600" height="600" src="${imgSrc.replace(
-      '200',
-      '600'
-    )}" alt="${name}"/>
-    <p>${desc}</p>
+  <img width="600" height="600" src="${imgSrc.replace(
+    '200',
+    '600'
+  )}" alt="${name}"/>
+  <p>${desc}</p>
   `;
+
   // show the modal
   modalOuter.classList.add('open');
 }
@@ -30,14 +31,14 @@ function closeModal() {
 }
 
 modalOuter.addEventListener('click', function(event) {
-  const isOutside = !event.target.closest('.modal-inner');
+  const isOutside = !event.target.closest('.model-inner');
   if (isOutside) {
     closeModal();
   }
 });
 
 window.addEventListener('keydown', event => {
-  console.log(event);
+  console.log('event');
   if (event.key === 'Escape') {
     closeModal();
   }
