@@ -2,7 +2,8 @@ function Gallery(gallery) {
   if (!gallery) {
     throw new Error('No Gallery Found!');
   }
-  // select the elements we need
+
+  // Select the elements we need
   const images = Array.from(gallery.querySelectorAll('img'));
   const modal = document.querySelector('.modal');
   const prevButton = modal.querySelector('.prev');
@@ -18,7 +19,7 @@ function Gallery(gallery) {
     }
     modal.classList.add('open');
 
-    // Event listeners to be bound when we open the modal:
+    // Event Listeners to be bound when we open the modal
     window.addEventListener('keyup', handleKeyUp);
     nextButton.addEventListener('click', showNextImage);
     prevButton.addEventListener('click', showPrevImage);
@@ -26,7 +27,7 @@ function Gallery(gallery) {
 
   function closeModal() {
     modal.classList.remove('open');
-    // TODO: add event listeners for clicks and keyboard..
+    // TODO: add event listeners for clicks and keyboards
     window.removeEventListener('keyup', handleKeyUp);
     nextButton.removeEventListener('click', showNextImage);
     prevButton.removeEventListener('click', showPrevImage);
@@ -47,6 +48,7 @@ function Gallery(gallery) {
   function showNextImage() {
     showImage(currentImage.nextElementSibling || gallery.firstElementChild);
   }
+
   function showPrevImage() {
     showImage(currentImage.previousElementSibling || gallery.lastElementChild);
   }
@@ -56,7 +58,7 @@ function Gallery(gallery) {
       console.info('no image to show');
       return;
     }
-    // update the modal with this info
+    // update modal with this info
     console.log(el);
     modal.querySelector('img').src = el.src;
     modal.querySelector('h2').textContent = el.title;
@@ -65,18 +67,18 @@ function Gallery(gallery) {
     openModal();
   }
 
-  // These are our Event Listeners!
+  // these are the event listeners
   images.forEach(image =>
     image.addEventListener('click', e => showImage(e.currentTarget))
   );
 
   // loop over each image
   images.forEach(image => {
-    // attach an event listener for each image
+    // attach event listener for each image
     image.addEventListener('keyup', e => {
       // when that is keyup'd, check if it was enter
       if (e.key === 'Enter') {
-        // if it was, show that image
+        // if it was show that image
         showImage(e.currentTarget);
       }
     });

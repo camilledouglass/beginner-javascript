@@ -58,6 +58,3 @@ function Slider(slider) {
   prevButton.addEventListener('click', () => move('back'));
   nextButton.addEventListener('click', move);
 }
-
-const mySlider = Slider(document.querySelector('.slider'));
-const dogSlider = Slider(document.querySelector('.dog-slider'));
